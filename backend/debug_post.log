@@ -1,9 +1,9 @@
 Array
 (
-    [nama_karyawan] => Aoi Inuyama
-    [id_divisi] => 7
-    [tanggal_masuk] => 2024-12-02
-    [alamat] => Hamamatsu Prefektur Shizuoka
-    [email] => inuyama12@gmail.com
-    [no_hp] => 081376786751
+    [nama_karyawan] => Eko Susanto
+    [id_divisi] => 3
+    [tanggal_masuk] => 2024-12-04
+    [alamat] => Kelurahan Mustikajaya Bekasi Timur
+    [email] => susantoeko12@gmail.com
+    [no_hp] => 085186073928
 )

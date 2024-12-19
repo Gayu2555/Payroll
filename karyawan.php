@@ -65,6 +65,7 @@
                                         <th class="p-3 text-left">Nama</th>
                                         <th class="p-3 text-left">Alamat</th>
                                         <th class="p-3 text-left">Nomor Telepon</th>
+                                        <th class="p-3 text-center">Divisi</th>
                                         <th class="p-3 text-center">Aksi</th>
                                     </tr>
                                 </thead>
@@ -172,24 +173,31 @@
             closeModalButton.addEventListener('click', closeModal);
 
             // Ambil data jabatan dari API atau endpoint
-            function loadJabatan() {
-                $.ajax({
-                    url: 'backend/get_divisi.php',
-                    method: 'GET',
-                    success: function(data) {
-                        jabatanSelect.innerHTML = '<option value="" disabled selected>Pilih Jabatan</option>';
-                        data.forEach(jabatan => {
-                            const option = document.createElement('option');
-                            option.value = jabatan.id_jabatan;
-                            option.textContent = jabatan.nama_jabatan;
-                            jabatanSelect.appendChild(option);
-                        });
-                    },
-                    error: function(error) {
-                        console.error('Gagal memuat data jabatan:', error);
-                    }
-                });
-            }
+            $(document).ready(function() {
+                function loadDivisi() {
+                    $.ajax({
+                        url: 'backend/get_divisi.php?action=get',
+                        method: 'GET',
+                        success: function(response) {
+                            if (response.data) {
+                                const select = $('#jabatan');
+                                select.empty().append('<option value="" disabled selected>Pilih Jabatan</option>');
+                                response.data.forEach(divisi => {
+                                    select.append(`<option value="${divisi.id_divisi}">${divisi.nama_divisi}</option>`);
+                                });
+                            } else {
+                                Swal.fire('Error', 'Tidak dapat mengambil data divisi', 'error');
+                            }
+                        },
+                        error: function() {
+                            Swal.fire('Error', 'Terjadi kesalahan saat mengambil data divisi', 'error');
+                        }
+                    });
+                }
+
+                // Panggil fungsi loadDivisi saat halaman dimuat
+                loadDivisi();
+            });
 
             // Ambil informasi lembur dari database
             function loadLemburInfo() {
@@ -215,6 +223,7 @@
             function loadKaryawanData(karyawanId) {
                 $.ajax({
                     url: `backend/get_karyawan.php=${karyawanId}`,
+                    url: `backend/get_divisi.php=${dvisiId}`,
                     method: 'GET',
                     success: function(data) {
                         document.getElementById('karyawan_id').value = data.id;
@@ -222,15 +231,13 @@
                         document.getElementById('alamat').value = data.alamat;
                         document.getElementById('nomor_telepon').value = data.nomor_telepon;
                         document.getElementById('email').value = data.email;
+                        document.getElementById('divisi').value = data.id
                     },
                     error: function(error) {
                         console.error('Gagal memuat data karyawan:', error);
                     }
                 });
             }
-
-            // Panggil fungsi untuk memuat data jabatan dan lembur saat halaman dimuat
-            loadJabatan();
             loadLemburInfo();
 
             // Tambahkan event listener untuk elemen yang mengklik untuk membuka modal

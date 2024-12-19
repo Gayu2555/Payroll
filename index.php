@@ -116,8 +116,8 @@
                             <select id="id_divisi" name="id_divisi" class="w-full p-3 border rounded-md" required>
                                 <option value="">Pilih Divisi</option>
                                 <option value="1">IT Staff</option>
-                                <option value="2">Operator Produksi</option>
-                                <option value="3">Acounting</option>
+                                <option value="3">Operator Produksi</option>
+                                <option value="4">Acounting</option>
                                 <option value="4">Staff Gudang</option>
                                 <option value="5">Quality Controll</option>
                                 <option value="6">Payroll</option>
