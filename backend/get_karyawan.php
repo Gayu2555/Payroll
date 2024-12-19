@@ -9,7 +9,7 @@ if ($conn->connect_error) {
 }
 
 // Ganti 'id_karyawan', 'nama_karyawan', 'nomor_telepon', dan 'alamat' sesuai dengan nama kolom sebenarnya di database
-$query = "SELECT id_karyawan AS id, nama_karyawan AS nama, nomor_telepon, alamat FROM karyawan";
+$query = "SELECT id_karyawan AS id, nama_karyawan AS nama, nomor_telepon, alamat, email FROM karyawan";
 $result = $conn->query($query);
 
 if (!$result) {
@@ -21,6 +21,8 @@ $data = [];
 while ($row = $result->fetch_assoc()) {
     $data[] = $row;
 }
+
+
 
 echo json_encode($data);
 $conn->close();

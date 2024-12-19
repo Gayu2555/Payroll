@@ -1,27 +1,31 @@
 <?php
-include 'config.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 header('Content-Type: application/json');
+include 'config.php';
 
-if ($conn->connect_error) {
-    echo json_encode(["error" => $conn->connect_error]);
+$action = $_GET['action'] ?? null;
+
+if ($action === 'get') {
+    $query = "
+        SELECT 
+            divisi.id_divisi,
+            divisi.nama_divisi,
+            gaji_pokok.gaji_pokok
+        FROM 
+            divisi
+        LEFT JOIN 
+            gaji_pokok 
+        ON 
+            divisi.id_divisi = gaji_pokok.id_divisi";
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        $data = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row;
+        }
+        echo json_encode(['data' => $data]);
+    } else {
+        echo json_encode(['error' => mysqli_error($conn)]);
+    }
     exit;
 }
-
-$query = "SELECT id_divisi, nama_divisi AS nama FROM divisi";
-$result = $conn->query($query);
-
-if (!$result) {
-    echo json_encode(["error" => $conn->error]);
-    exit;
-}
-
-$data = [];
-while ($row = $result->fetch_assoc()) {
-    $data[] = $row;
-}
-
-echo json_encode($data);
-$conn->close();

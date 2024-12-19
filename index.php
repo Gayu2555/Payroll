@@ -69,6 +69,12 @@
                           hover:border-blue-600">
                     <i class="fas fa-money-check-alt mr-3"></i>Penggajian
                 </a>
+                <a href="gajian.php" data-section="payroll"
+                    class="menu-item block px-5 py-3 hover:bg-blue-100 transition duration-200 
+                          text-gray-700 hover:text-blue-600 border-l-4 border-transparent 
+                          hover:border-blue-600">
+                    <i class="fas fa-money-check-alt mr-3"></i>Manajemen & Penggajian
+                </a>
             </div>
         </nav>
     </aside>

@@ -30,15 +30,15 @@
                         <i class="fas fa-home mr-4 text-lg"></i>
                         <span class="font-medium">Dashboard</span>
                     </a>
-                    <a href="#employees" data-section="employees" class="menu-item block px-6 py-4 hover:bg-blue-700 transition duration-200 flex items-center border-l-4 border-transparent hover:border-white">
+                    <a href="index.php" data-section="employees" class="menu-item block px-6 py-4 hover:bg-blue-700 transition duration-200 flex items-center border-l-4 border-transparent hover:border-white">
                         <i class="fas fa-users mr-4 text-lg"></i>
                         <span class="font-medium">Karyawan</span>
                     </a>
-                    <a href="#attendance" data-section="attendance" class="menu-item block px-6 py-4 hover:bg-blue-700 transition duration-200 flex items-center border-l-4 border-transparent hover:border-white">
+                    <a href="absensi.php" data-section="attendance" class="menu-item block px-6 py-4 hover:bg-blue-700 transition duration-200 flex items-center border-l-4 border-transparent hover:border-white">
                         <i class="fas fa-calendar-check mr-4 text-lg"></i>
                         <span class="font-medium">Absensi</span>
                     </a>
-                    <a href="#divisions" data-section="divisions" class="menu-item block px-6 py-4 bg-blue-700 flex items-center border-l-4 border-transparent">
+                    <a href="divisi.php" data-section="divisions" class="menu-item block px-6 py-4 bg-blue-700 flex items-center border-l-4 border-transparent">
                         <i class="fas fa-building mr-4 text-lg"></i>
                         <span class="font-medium">Divisi</span>
                     </a>
